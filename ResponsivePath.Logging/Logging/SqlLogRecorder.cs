@@ -76,7 +76,7 @@ namespace ResponsivePath.Logging
             using (var connection = providerFactory.CreateConnection(connectionString))
             using (var cmdCreateEntry = SqlLogRecorder.cmdCreateEntry.BuildFrom(connection, new Dictionary<string, object>
             {
-                { "@timestamp", logEntry.Timestamp },
+                { "@timestamp", logEntry.Timestamp.DateTime },
                 { "@severity", logEntry.Severity.ToString("g") },
                 { "@message", logEntry.Message ?? (object)DBNull.Value },
                 { "@exception", JsonEncode(logEntry.Exception) ?? (object)DBNull.Value },
